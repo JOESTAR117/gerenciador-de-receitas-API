@@ -1,0 +1,34 @@
+{
+  "name": "gerenciador-de-projetos-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "start": "yarn build && node dist/index.js",
+    "dev": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JOESTAR117/gerenciador-de-projetos-API.git"
+  },
+  "keywords": [],
+  "author": "Jackson Rios",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JOESTAR117/gerenciador-de-projetos-API/issues"
+  },
+  "homepage": "https://github.com/JOESTAR117/gerenciador-de-projetos-API#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.7.4",
+    "@babel/preset-env": "^7.20.2"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
+    "nodemon": "^2.0.20"
+  }
+}
