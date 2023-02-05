@@ -32,4 +32,30 @@ const createUser = async (req, res) => {
     }
 }
 
-export default createUser
+const findAllUsers = async (req, res) => {
+    try {
+        const users = await UserService.findAllService()
+
+        if (users.length === 0) {
+            return res
+                .status(400)
+                .json({ message: 'There are no registered users' })
+        }
+
+        res.status(201).json(users)
+    } catch (err) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+const findById = async (req, res) => {
+    try {
+        const user = req.user
+
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+export { createUser, findAllUsers, findById }
