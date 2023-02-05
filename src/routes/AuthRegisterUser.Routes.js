@@ -1,16 +1,8 @@
 import { Router } from 'express'
-
-import upload from '../multer/image'
-
-import { AuthRegisterUserController } from '../controllers/AuthRegisterUserController'
+import createUser from '../controllers/User.controller'
 
 const router = Router()
 
-router.get('/', AuthRegisterUserController.init)
-router.post(
-    '/auth/register/user',
-    upload.single('image'),
-    AuthRegisterUserController.registerUser
-)
+router.post('/registration', createUser)
 
 export default router

@@ -21,6 +21,9 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false,
     },
+    avatar: {
+        type: String
+    }
 })
 
 UserSchema.pre('save', async function (next) {
