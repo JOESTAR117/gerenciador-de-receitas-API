@@ -58,4 +58,23 @@ const findById = async (req, res) => {
     }
 }
 
-export { createUser, findAllUsers, findById }
+const updateUser = async (req, res) => {
+    try {
+        const { name, email, age, password, avatar } = req.body
+
+        if (!name && !email && !age && !password) {
+            res.status(400).send({
+                message: 'Submit at least one fields for update',
+            })
+        }
+
+        const { id, user } = req
+
+        await UserService.updateService(id, name, email, age, password, avatar)
+        res.status(200).send({ message: 'User updated successfully' })
+    } catch (err) {
+        res.status(500).send({ message: err.message })
+    }
+}
+
+export { createUser, findAllUsers, findById, updateUser }

@@ -3,6 +3,7 @@ import {
     createUser,
     findAllUsers,
     findById,
+    updateUser,
 } from '../controllers/User.controller'
 import { validId, validUser } from '../middlewares/Global.middlewares'
 
@@ -15,5 +16,6 @@ router.get('/', (req, res) => {
 router.post('/registration', createUser)
 router.get('/users', findAllUsers)
 router.get('/users/:id', validId, validUser, findById)
+router.patch('/users/:id', validId, validUser, updateUser)
 
 export default router
