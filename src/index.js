@@ -6,9 +6,7 @@ import router from './routes/Users.routes.js'
 import authRouter from './routes/Auth.routes'
 import revenuesRouter from './routes/Revenues.routes'
 
-
 dotenv.config()
-
 
 const app = express()
 
@@ -19,5 +17,4 @@ app.use(router)
 app.use(authRouter)
 app.use(revenuesRouter)
 
-
-export default app;
+export default app

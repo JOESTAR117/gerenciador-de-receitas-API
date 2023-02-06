@@ -8,7 +8,7 @@ const connectDatabase = () => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-        .then(() => console.log('MongoDB atlas Connectd'))
+        .then(() => console.log('MongoDB atlas Connected'))
         .catch((error) => console.error(error.message))
 }
 export default connectDatabase
