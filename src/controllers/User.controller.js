@@ -1,5 +1,4 @@
 import UserService from '../services/User.service'
-import bcrypt from 'bcrypt'
 
 const createUser = async (req, res) => {
     try {
