@@ -1,38 +1,23 @@
-import Revenues from '../models/Revenues'
+import createService from '../services/Revenue.service'
 
 const createRevenue = async (req, res) => {
-    const { typeRevenue, value, dateEntry } = req.body.user.month.listMonth
-
-    const title = req.body.user.month.title
-
-    const user = req.body.user.title
-
-    if (!typeRevenue || !value || !dateEntry) {
-        return res
-            .status(422)
-            .json({ message: 'It is mandatory to fill in all fields' })
-    }
-
-    const revenues = new Revenues({
-        user: {
-            title: user,
-            month: {
-                title,
-                listMonth: {
-                    typeRevenue,
-                    value,
-                    dateEntry,
-                },
-            },
-        },
-    })
-
+    const { title, typeRevenue, value } = req.body
     try {
-        await revenues.save()
-        return res.status(201).json({ message: 'successful registration!' })
+        if (!title || !typeRevenue || !value) {
+            res.status(400).json({
+                message: 'Submit all fields for registration',
+            })
+        }
+        await createService({
+            title,
+            typeRevenue,
+            value,
+            user: req.userId,
+        })
+        res.status(201).json({message: `Revenue created successfully`})
     } catch (err) {
-        res.status(500).json(err.message)
+        res.status(500).send(err.message)
     }
 }
 
-export default createRevenue;
+export default createRevenue

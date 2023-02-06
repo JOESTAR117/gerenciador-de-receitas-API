@@ -9,19 +9,19 @@ const authMiddleware = (req, res, next) => {
         const { authorization } = req.headers
 
         if (!authorization) {
-            return res.send(401)
+            return res.sendStatus(401)
         }
 
         const parts = authorization.split(' ')
 
         if (parts.length !== 2) {
-            return res.send(401)
+            return res.sendStatus(401)
         }
 
         const [schema, token] = parts
 
         if (schema !== 'Token') {
-            return res.send(401)
+            return res.sendStatus(401)
         }
 
         jwt.verify(token, process.env.SECRET_JWT, async (error, decoded) => {
