@@ -20,7 +20,7 @@ const authMiddleware = (req, res, next) => {
 
         const [schema, token] = parts
 
-        if (schema !== 'Bearer') {
+        if (schema !== 'Token') {
             return res.send(401)
         }
 
