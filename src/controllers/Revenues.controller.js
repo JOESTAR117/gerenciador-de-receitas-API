@@ -1,3 +1,4 @@
+import Revenues from '../models/Revenues'
 import createService from '../services/Revenue.service'
 
 const createRevenue = async (req, res) => {
@@ -14,10 +15,21 @@ const createRevenue = async (req, res) => {
             value,
             user: req.userId,
         })
-        res.status(201).json({message: `Revenue created successfully`})
+        res.status(201).json({ message: `Revenue created successfully` })
     } catch (err) {
         res.status(500).send(err.message)
     }
 }
 
-export default createRevenue
+const findAllRevenue = async (req, res) => {
+    try {
+        const { id } = req.params
+        const revenue = await Revenues.find({ user: id }).sort({ _id: -1 })
+
+        return res.json(revenue)
+    } catch (err) {
+        res.status(500).json(err.message)
+    }
+}
+
+export { createRevenue, findAllRevenue }
